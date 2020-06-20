@@ -42,7 +42,7 @@
 
 	<scm>
 		<connection>scm:git:https://github.com/codeshuffle/sfg-pet-clinic.git</connection>
-		<url>https://github.com/codeshuffle/sfg-pet-clinic.git</url>
+		<url>https://github.com/codeshuffle/sfg-pet-clinic</url>
 <!--		<developerConnection>scm:git:https://github.com/codeshuffle/sfg-pet-clinic.git</developerConnection>-->
 
 	  <tag>petclinic-0.0.1</tag>
