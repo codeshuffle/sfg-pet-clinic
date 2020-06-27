@@ -4,8 +4,21 @@
     <meta charset="UTF-8">
     <title>List of vets</title>
 </head>
-<body>
+<!--/*@thymesVar id="vet" type="bb.org.petclinic.model.Vet"*/-->
 <h1 th:text="'List of vets'">Vets...</h1>
-
+<table>
+<thead>
+<th>Id</th>
+<th>First N.</th>
+<th>Last N.</th>
+</thead>
+<tbody>
+<tr th:each="vet : ${vets}">
+    <td th:text="${vet?.id}">1</td>
+    <td th:text="${vet?.firstName}">joevet</td>
+    <td th:text="${vet?.lastName}">Veterinariam</td>
+</tr>
+</tbody>
+</table>
 </body>
 </html>
