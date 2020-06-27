@@ -21,7 +21,7 @@ public class OwnerServiceMap<T,ID> extends AbstractMapService<Owner, Long> imple
 
     @Override
     public Owner save( Owner object) {
-        return super.save(object.getId(), object);
+        return super.save( object);
     }
 
     @Override
