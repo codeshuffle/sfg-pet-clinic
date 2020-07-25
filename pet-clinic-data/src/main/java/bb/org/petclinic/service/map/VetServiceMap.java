@@ -1,14 +1,13 @@
 package bb.org.petclinic.service.map;
 
 import bb.org.petclinic.model.Vet;
-import bb.org.petclinic.service.CrudService;
 import bb.org.petclinic.service.VetService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
 import java.util.Set;
 
-@Service
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
+@Service("mapVetService")
+public class VetServiceMap<T,ID> extends AbstractMapService<Vet, Long> implements VetService {
     @Override
     public Set<Vet> findAll() {
         return super.findAll();
@@ -34,4 +33,5 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetS
     public void deleteById(Long id) {
         super.deleteById(id);
     }
+
 }

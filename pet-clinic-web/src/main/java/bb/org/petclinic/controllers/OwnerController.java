@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Set;
 
 @Controller
-@RequestMapping("/owner")
+//@RequestMapping("/owner")
 public class OwnerController {
 
-    private Set<Owner> owners;
+    //private Set<Owner> owners;
     private final OwnerService ownerService;
 
     public OwnerController(OwnerService ownerService) {
@@ -20,7 +20,8 @@ public class OwnerController {
     }
 
 
-    @RequestMapping({"","/", "/index", "/index.html"})
+    //@RequestMapping({"","/", "/index", "/index.html"})
+    @RequestMapping({"/owners","/owners/index", "/owners/index.html"})
     public String listOwners(Model model) {
         model.addAttribute("owners", ownerService.findAll());
         return "owners/index";
