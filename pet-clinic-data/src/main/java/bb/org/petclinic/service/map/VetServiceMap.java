@@ -1,13 +1,21 @@
 package bb.org.petclinic.service.map;
 
+import bb.org.petclinic.model.Speciality;
 import bb.org.petclinic.model.Vet;
+import bb.org.petclinic.service.SpecialityService;
 import bb.org.petclinic.service.VetService;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
 import java.util.Set;
 
 @Service("mapVetService")
-public class VetServiceMap<T,ID> extends AbstractMapService<Vet, Long> implements VetService {
+public class VetServiceMap<T, ID> extends AbstractMapService<Vet, Long> implements VetService {
+    private final SpecialityService specialityService;
+
+    public VetServiceMap(SpecialityService specialityService) {
+        this.specialityService = specialityService;
+    }
+
     @Override
     public Set<Vet> findAll() {
         return super.findAll();
@@ -20,18 +28,26 @@ public class VetServiceMap<T,ID> extends AbstractMapService<Vet, Long> implement
 
     @Override
     public Vet save(Vet object) {
-        return super.save( object);
+        if (object.getSpecialities().size() > 0) {
+            object.getSpecialities().forEach(speciality -> {
+                if (speciality.getId() == null) {
+                    Speciality savedSpeciality = specialityService.save(speciality);
+                    speciality.setId(savedSpeciality.getId());
+                }
+            });
+        }
+            return super.save(object);
+        }
+
+        @Override
+        public void delete (Vet object){
+            super.delete(object);
+
+        }
+
+        @Override
+        public void deleteById (Long id){
+            super.deleteById(id);
+        }
+
     }
-
-    @Override
-    public void delete(Vet object) {
-        super.delete(object);
-
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        super.deleteById(id);
-    }
-
-}

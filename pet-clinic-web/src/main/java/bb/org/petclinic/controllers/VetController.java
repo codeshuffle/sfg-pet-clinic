@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Set;
 
 @Controller
-@RequestMapping("/vets")
+//@RequestMapping("/vets")
 public class VetController {
 
     //private Set<Vet> vets;
@@ -21,10 +21,10 @@ public class VetController {
         this.vetService = vetService;
     }
 
-    @RequestMapping({"/", "index"})
+    @RequestMapping({"/vets", "/vets/index","/vets.html"})
     public String listVets(Model model)
     {
         model.addAttribute("vets", vetService.findAll());
-        return  "vet/index";
+        return  "vets/index";
     }
 }
