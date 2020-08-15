@@ -17,7 +17,12 @@ public class VetController {
     //private Set<Vet> vets;
     private final VetService vetService;
 
-    public VetController(@Qualifier("mapVetService")  VetService vetService) {
+    //public VetController(@Qualifier("mapVetService")  VetService vetService) {
+     //   this.vetService = vetService;
+    //}
+
+
+    public VetController(VetService vetService) {
         this.vetService = vetService;
     }
 
